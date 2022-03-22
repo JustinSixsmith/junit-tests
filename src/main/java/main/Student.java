@@ -1,11 +1,11 @@
-package student;
+package main;
 
 import java.util.ArrayList;
 
 public class Student {
-    long id;
-    String name;
-    ArrayList<Integer> grades;
+    private long id;
+    private String name;
+    private ArrayList<Integer> grades;
 
     public Student(long id, String name, ArrayList<Integer> grades) {
         this.id = id;
