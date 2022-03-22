@@ -12,17 +12,25 @@ public class Student {
     }
 
     public Student(long id, String name) {
+        this();
         this.id = id;
         this.name = name;
-        this.grades = new ArrayList<>();
     }
 
     public double getGradeAverage() {
+        if (grades.size() == 0) {
+            throw new NoGradesException(this.name + " has no grade!");
+        }
+
         double total = 0;
         for (int grade : grades) {
             total += grade;
         }
         return total / grades.size();
+    }
+
+    public void updateGrade(int index, int element) {
+        grades.set(index, element);
     }
 
     public long getId() {

@@ -2,7 +2,6 @@ package main;
 
 import org.junit.Test;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -11,7 +10,10 @@ import static org.junit.Assert.*;
 
 public class StudentTest {
     public static final long STUDENT_ID = 1;
-    public static String STUDENT_NAME = "Bob Smith";
+    public static final String STUDENT_NAME = "Bob Smith";
+    public static final int GRADE_1 = 100;
+    public static final ArrayList<Integer> STUDENT_GRADES = new ArrayList<>(Arrays.asList(100, 90, 80));
+
 
 
     @Test
@@ -34,7 +36,7 @@ public class StudentTest {
     public void testGetGrades() {
         Student s1 = new Student();
         ArrayList<Integer> expected = new ArrayList<>();
-        assertArrayEquals(expected.toArray(), s1.getGrades().toArray());
+        assertEquals(expected, s1.getGrades());
     }
 
     @Test
@@ -45,12 +47,29 @@ public class StudentTest {
     }
 
     @Test
-    public void testGetGradeAverage() {
+    public void testGetGradesAverage() {
         Student s1 = new Student();
-        s1.addGrade(100);
-        s1.addGrade(90);
-        s1.addGrade(80);
-        assertEquals(90, s1.getGradeAverage());
+        for (Integer grade : STUDENT_GRADES) {
+            s1.addGrade(grade);
+        }
+        assertEquals(90, s1.getGradeAverage(), 0);
+    }
+
+    @Test(expected = NoGradesException.class)
+    public void testGetAverageNoGrade() {
+        Student s1 = new Student();
+        assertEquals(0, s1.getGradeAverage(), 1);
+    }
+
+    @Test
+    public void testUpdateGrade() {
+        Student s1 = new Student();
+        for (Integer grade : STUDENT_GRADES) {
+            s1.addGrade(grade);
+        }
+        assertEquals(GRADE_1, s1.getGrades().get(0).intValue());
+        s1.updateGrade(0, 95);
+        assertEquals(95, s1.getGrades().get(0).intValue());
     }
 
 }
