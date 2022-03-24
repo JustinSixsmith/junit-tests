@@ -34,7 +34,7 @@ public class Student {
     }
 
     public void deleteGrade(int index) {
-        grades.set(index, 0);
+        grades.remove(index);
     }
 
     public long getId() {
@@ -55,6 +55,10 @@ public class Student {
 
     public ArrayList<Integer> getGrades() {
         return grades;
+    }
+
+    public int getGrade(int index) {
+        return getGrades().get(index);
     }
 
     public void addGrade(int grade) {

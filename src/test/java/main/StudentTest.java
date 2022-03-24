@@ -78,9 +78,9 @@ public class StudentTest {
         for (Integer grade : STUDENT_GRADES) {
             s1.addGrade(grade);
         }
-        assertEquals(GRADE_1, s1.getGrades().get(0).intValue());
+        assertEquals(100, s1.getGrade(0));
         s1.deleteGrade(0);
-        assertEquals(0, s1.getGrades().get(0).intValue());
+        assertEquals(90, s1.getGrade(0));
     }
 
 }
