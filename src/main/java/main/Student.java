@@ -33,6 +33,10 @@ public class Student {
         grades.set(index, element);
     }
 
+    public void deleteGrade(int index) {
+        grades.set(index, 0);
+    }
+
     public long getId() {
         return id;
     }

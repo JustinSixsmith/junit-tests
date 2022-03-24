@@ -72,4 +72,15 @@ public class StudentTest {
         assertEquals(95, s1.getGrades().get(0).intValue());
     }
 
+    @Test
+    public void testDeleteGrade() {
+        Student s1 = new Student();
+        for (Integer grade : STUDENT_GRADES) {
+            s1.addGrade(grade);
+        }
+        assertEquals(GRADE_1, s1.getGrades().get(0).intValue());
+        s1.deleteGrade(0);
+        assertEquals(0, s1.getGrades().get(0).intValue());
+    }
+
 }
